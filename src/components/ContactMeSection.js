@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useFormik } from "formik";
+import { useFormik,} from "formik";
 import {
   Box,
   Button,
@@ -35,7 +35,7 @@ const ContactMeSection = () => {
       firstName: Yup.string().required('required!'),
       email: Yup.string().email('invalid email').required("Required!!!"),
       type: Yup.string().required('Required!!!'),
-      comment: Yup.string().min("26").required('Required!!!!'),
+      comment: Yup.string().min(26,"Must be at least 26 characters").required('Required!!!!'),
     }),
   });
 

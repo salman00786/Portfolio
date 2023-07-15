@@ -33,6 +33,37 @@ const socials = [
 ];
 
 const Header = () => {
+
+  const headerRef = useRef();
+
+
+ useEffect(() => {
+  let prevScrollPos = window.scrollY;
+
+
+  const handleScroll = () => {
+    const currentScrollPos = window.scrollY;
+    const headerElement = headerRef.current;
+    if(!headerElement) {
+      return;
+    }
+    if (prevScrollPos > currentScrollPos) {
+      headerElement.style.tranform = "translateY(0)";
+    } else {
+      headerElement.style.tranform = "translateY(-200px)";
+    }
+    prevScrollPos = currentScrollPos;
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return  () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  
+ },[])
+
+  
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -46,6 +77,7 @@ const Header = () => {
 
   return (
     <Box
+      ref={headerRef}
       position="fixed"
       top={0}
       left={0}
@@ -74,8 +106,8 @@ const Header = () => {
           </nav>
           <nav>
             <HStack spacing={8}>
-              <a href="/#contact-me" onClick={handleClick}> <section id="contactme-section">Contact Me</section></a>
-              <a href="/#projects" onClick={handleClick} ><section id="#projects-section">Projects</section></a>
+              <a href="/#contact-me" onClick={handleClick("contactme")}> <section id="#contactme-section">Contact Me</section></a>
+              <a href="/#projects" onClick={handleClick("projects")} ><section id="#projects-section">Projects</section></a>
             </HStack>
           </nav>
         </HStack>
