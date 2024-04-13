@@ -2,11 +2,12 @@ import React from "react";
 import { Avatar, Heading, VStack } from "@chakra-ui/react";
 import FullScreenSection from "./FullScreenSection";
 import styled from "@emotion/styled";
+import img from "../images/60959298.jpeg"
 
-const greeting = "Hello, I am Pete!";
+const greeting = "Hello, I am Salman!";
 const bio1 = "A frontend developer";
 const bio2 = "specialised in React";
-const img = "https://i.pravatar.cc/150?img=7 ";
+
 
 
 
